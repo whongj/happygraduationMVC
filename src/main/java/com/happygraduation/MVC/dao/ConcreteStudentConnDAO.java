@@ -90,32 +90,36 @@ public class ConcreteStudentConnDAO implements StudentConnDAO {
         return i;
     }
 
-//待定
     public int deleteStudentConnfromFilepath(String Sno) {
-        Connection con = null ;
-        PreparedStatement ps = null ;
-        int i = 0 ;
-        try
-        {
-            con = JDBCUtils.getConnection();
-            String sql = "update studentconn set filepath  where Sno =?";
-            ps = con.prepareStatement(sql);
-//            ps.setString(1, password);
-            ps.setString(2, Sno);
-            i = ps.executeUpdate() ;
-
-        }
-        catch(SQLException e)
-        {
-            throw new DAOException(e.getMessage(),e);
-        }
-        finally
-        {
-            JDBCUtils.free(null, ps, con);
-        }
-
-        return i;
+        return 0;
     }
+
+    //待定
+//    public int deleteStudentConnfromFilepath(String Sno) {
+//        Connection con = null ;
+//        PreparedStatement ps = null ;
+//        int i = 0 ;
+//        try
+//        {
+//            con = JDBCUtils.getConnection();
+//            String sql = "update studentconn set filepath  where Sno =?";
+//            ps = con.prepareStatement(sql);
+////            ps.setString(1, password);
+//            ps.setString(2, Sno);
+//            i = ps.executeUpdate() ;
+//
+//        }
+//        catch(SQLException e)
+//        {
+//            throw new DAOException(e.getMessage(),e);
+//        }
+//        finally
+//        {
+//            JDBCUtils.free(null, ps, con);
+//        }
+//
+//        return i;
+//    }
 //待定
     public int deleteStudentConnfromyuanmafilepath(String Sno) {
         return 0;

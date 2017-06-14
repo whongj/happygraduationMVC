@@ -20,5 +20,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <base href="<%=basePath%>">
-    <base target="main" />
+    <base target="main"/>
     <title>欢迎你，亲爱的用户</title>
+    <h1>恭喜你操作成功</h1>
+     <%
+    response.setHeader("Refresh","3;URL=index.jsp");
+%>
+</head>
+
+</html>

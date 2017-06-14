@@ -22,7 +22,7 @@ import java.io.Serializable;
 public class StudentConn implements Serializable {
 
     private  String sno;
-    private String lunwenFilePath;
+        private String lunwenFilePath;
     private String yuanmaFilePath;
     private String sname;
 

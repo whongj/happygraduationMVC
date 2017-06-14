@@ -1,5 +1,6 @@
 package com.happygraduation.MVC.controller;
 
+import com.happygraduation.MVC.pojo.Teacher;
 import com.happygraduation.MVC.service.Admainservice;
 
 import javax.jws.WebService;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.swing.plaf.TableHeaderUI;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -21,16 +24,20 @@ public class admainlogin extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
+        String username = req.getParameter("sno");
         String password = req.getParameter("password");
         PrintWriter out= resp.getWriter();
-
-        if (username == "15140A02" && password == "123") {
-            out.print("管理员登录成功" + username);
-
+        HttpSession httpSession = req.getSession();
+        Teacher teacher = new Teacher();
+        if (username.equals("15140A02")&&password.equals("123456")) {
+            teacher.setPassword("123456");
+            teacher.setTno("15140A02");
+            httpSession.setAttribute("admain", teacher);
             resp.sendRedirect("/admin/success.jsp");
-        }else
+        }else{
             resp.sendRedirect("error.jsp");
+
+        }
 
     }
 }

@@ -86,7 +86,7 @@
         <div class="col-md-4">
             <h2>信息中心</h2>
             <p> 毕业生信息导入和分类管理、通知功能</p>
-            <p><a class="btn btn-default" href="功能页面1" role="button">教师点这导入信息&raquo;</a></p>
+            <p><a class="btn btn-default" href="update.html" role="button">教师点这导入信息&raquo;</a></p>
         </div>
         <div class="col-md-4">
             <h2>文件上传</h2>
