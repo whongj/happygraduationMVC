@@ -4,11 +4,13 @@ import com.happygraduation.MVC.dao.ConcreteStudentConnDAO;
 import com.happygraduation.MVC.dao.StudentConnDAO;
 import com.happygraduation.MVC.pojo.Student;
 import com.happygraduation.MVC.pojo.StudentConn;
+import com.happygraduation.MVC.service.Admainservice;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,11 +23,13 @@ import java.util.List;
 /**
  * Created by wanghongjie on 2017/6/15.
  */
+@WebServlet(name = "upload",urlPatterns = "/upload")
 public class Upload extends HttpServlet {
     private String uploadPath = "D:\\temp"; // 上传文件的目录
     private String tempPath = "d:\\temp\\buffer\\"; // 临时文件目录
     File tempPathFile;
-    StudentConnDAO studentConnDAO = new ConcreteStudentConnDAO();
+    Admainservice admainservice = new Admainservice();
+//    StudentConnDAO studentConnDAO = new ConcreteStudentConnDAO();
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -68,6 +72,17 @@ public class Upload extends HttpServlet {
                         studentConn.setYuanmaFilePath(uploadPath+fullFile.getName());
                 }
             }
+            studentConn.setSno(student.getSno());
+            studentConn.setQicaistate(false);
+            studentConn.setTushustate(false);
+            studentConn.setXuefeistate(false);
+            if(admainservice.addAStudentConn(studentConn)){
+                httpSession.setAttribute("StuConn", studentConn);
+
+                response.sendRedirect("uploadsuccess.jsp");
+            }else {
+                response.sendRedirect("error.jsp");
+            }
             System.out.print("upload succeed");
         } catch (Exception e) {
             // 可以跳转出错页面
@@ -85,4 +100,5 @@ public class Upload extends HttpServlet {
             tempPathFile.mkdirs();
         }
     }
+
 }

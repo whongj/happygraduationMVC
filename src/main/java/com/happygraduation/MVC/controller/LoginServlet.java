@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet{
                 if(service.login(Sno,password)){
                     student = service.getStudentBysno(Sno,password);
                     httpSession.setAttribute("student", student);
-                    resp.sendRedirect("/success.jsp");
+                    resp.sendRedirect("user/success.jsp");
         }else
             resp.sendRedirect("/error.jsp");
     }
