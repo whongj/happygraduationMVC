@@ -10,11 +10,11 @@ import java.util.Set;
 public interface StudentDAO {
     public int addStudent(Student student);
 
-    public int deleteStudent(String name);
+    public int deleteStudent(String Sno);
 
     public int updateStudent(String Sno,String password);
 
-    public Student findStudent(String name);
+    public Student findStudent(String Sno);
 
     public Set<Student> findAll();
 

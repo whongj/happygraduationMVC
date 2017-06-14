@@ -30,6 +30,32 @@ import java.util.Set;
  */
 public class ConcreteStudentConnDAO implements StudentConnDAO {
 
+    public int deleteStudentConn(String sno){
+        Connection con = null ;
+        PreparedStatement ps = null ;
+        int i = 0 ;
+        try
+        {
+            con = JDBCUtils.getConnection();
+            String sql = "delete from studentConn where Sno =?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, sno);
+
+            i = ps.executeUpdate() ;
+
+        }
+        catch(SQLException e)
+        {
+            throw new DAOException(e.getMessage(),e);
+        }
+        finally
+        {
+            JDBCUtils.free(null, ps, con);
+        }
+
+        return i;
+    }
+
 
     public int addStudentConn(StudentConn studentConn) {
         Connection con = null ;
@@ -100,6 +126,22 @@ public class ConcreteStudentConnDAO implements StudentConnDAO {
     }
 
     public int updateStudenttushustate(String Sno, boolean tushustate) {
+        return 0;
+    }
+
+    public int updateStudentqicaistate(String Sno, boolean qicaistate) {
+        return 0;
+    }
+
+    public int updateStudentConnyuanmaFilepath(String Sno, String path) {
+        return 0;
+    }
+
+    public int updateStudentConnshuomingshuFilepath(String Sno, String shuomingshuFilepath) {
+        return 0;
+    }
+
+    public int updateStudentConnshuomingshuFilepath() {
         return 0;
     }
 

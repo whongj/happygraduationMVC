@@ -30,13 +30,18 @@ public interface StudentConnDAO {
 
     public int updateStudentxuefeistate(String Sno,boolean xuefeistate);
 
-
     public int updateStudenttushustate(String Sno,boolean tushustate);
+
+    public int updateStudentqicaistate(String Sno, boolean qicaistate);
+
+    public int updateStudentConnyuanmaFilepath(String Sno, String path);
+
+    public int updateStudentConnshuomingshuFilepath(String Sno,String shuomingshuFilepath);
 
     public StudentConn findStudent(String Sno);
 
     //查找所有学生的剩余
     public Set<StudentConn> findAll();
 
-
+    public int deleteStudentConn(String sno);
 }
