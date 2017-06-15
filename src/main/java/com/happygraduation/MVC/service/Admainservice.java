@@ -53,10 +53,12 @@ public class Admainservice {
         }else
             return false;
     }
-    public boolean addyuanmaFilepath(String yuanmafilepath,String sno){
-        if (0<studentconnDAO.)
-    }
 
+//
+//    public boolean addyuanmaFilepath(String yuanmafilepath,String sno){
+//        if (0<studentConnDAO)
+//    }
+//
 
 
 }

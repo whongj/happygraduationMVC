@@ -12,6 +12,7 @@
 </head>
 <body>
 ${sessionScope.get("student")}
-
+<p> 恭喜您登陆成功 </p>
+<% request%>
 </body>
 </html>
