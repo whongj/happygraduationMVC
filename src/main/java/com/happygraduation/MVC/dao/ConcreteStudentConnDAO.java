@@ -4,10 +4,7 @@ import com.happygraduation.MVC.Exception.DAOException;
 import com.happygraduation.MVC.pojo.Student;
 import com.happygraduation.MVC.pojo.StudentConn;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -122,19 +119,98 @@ public class ConcreteStudentConnDAO implements StudentConnDAO {
 //    }
 //待定
     public int deleteStudentConnfromyuanmafilepath(String Sno) {
-        return 0;
+
+        return  0;
     }
 
     public int updateStudentxuefeistate(String Sno, boolean xuefeistate) {
-        return 0;
+
+            Connection conn = null;
+            Statement st = null;
+            ResultSet rs = null;
+            int i=0;
+        try {
+            // 2.建立连接
+            conn = JDBCUtils.getConnection();
+            // conn = JdbcUtilsSing.getInstance().getConnection();
+            // 3.创建语句
+            st = conn.createStatement();
+            String sql;
+            if(xuefeistate) {
+                sql = "update studentconn set xuefeistate=1 WHERE Sno=" + Sno;
+            }else{
+                sql = "UPDATE  studentconn SET  xuefeistate =0 WHERE Sno" + Sno;
+            }
+            // 4.执行语句
+            i = st.executeUpdate(sql);
+
+            System.out.println("i=" + i);
+        } catch (SQLException sql) {
+            throw new DAOException(sql.getMessage(),sql);
+        } finally {
+            JDBCUtils.free(rs, st, conn);
+        }
+        return i;
     }
 
     public int updateStudenttushustate(String Sno, boolean tushustate) {
-        return 0;
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        int i=0;
+        try {
+            // 2.建立连接
+            conn = JDBCUtils.getConnection();
+            // conn = JdbcUtilsSing.getInstance().getConnection();
+            // 3.创建语句
+            st = conn.createStatement();
+            String sql;
+            if(tushustate) {
+                sql = "update studentconn set tushustate=1 WHERE Sno=" + Sno;
+            }else{
+                sql = "UPDATE  studentconn SET  tushustate =0 WHERE Sno" + Sno;
+            }
+            // 4.执行语句
+            i = st.executeUpdate(sql);
+
+            System.out.println("i=" + i);
+        } catch (SQLException sql) {
+            throw new DAOException(sql.getMessage(),sql);
+        } finally {
+            JDBCUtils.free(rs, st, conn);
+        }
+        return i;
     }
 
     public int updateStudentqicaistate(String Sno, boolean qicaistate) {
-        return 0;
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        int i=0;
+        try {
+            // 2.建立连接
+            conn = JDBCUtils.getConnection();
+            // conn = JdbcUtilsSing.getInstance().getConnection();
+            // 3.创建语句
+            st = conn.createStatement();
+            String sql = null;
+            if(qicaistate) {
+                sql = "update studentconn set qicaistate=1 WHERE Sno=" + Sno;
+            }else{
+                sql = "UPDATE  studentconn SET  qicaistate =0 WHERE Sno" + Sno;
+            }
+            // 4.执行语句
+            i = st.executeUpdate(sql);
+
+            System.out.println("i=" + i);
+        } catch (SQLException sql) {
+            throw new DAOException(sql.getMessage(),sql);
+        } finally {
+            JDBCUtils.free(rs, st, conn);
+        }
+        return i;
     }
 
     public int updateStudentConnyuanmaFilepath(String Sno, String path) {

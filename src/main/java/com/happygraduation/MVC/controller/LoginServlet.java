@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by ${wanghongjie} on 2017/6/12.
+ * Created by ${zhanghong} on 2017/6/12.
  */
 @WebServlet(name = "loginservlet",urlPatterns = "/login")
 public class LoginServlet extends HttpServlet{

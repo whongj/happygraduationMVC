@@ -33,12 +33,21 @@ public class Admainservice {
     }
 
     public boolean updatexuefeistate(String Sno,boolean xuefeistate){
-        if (0 < studentConnDAO.updateStudenttushustate(Sno, xuefeistate)) {
+        if (0 < studentConnDAO.updateStudentxuefeistate(Sno, xuefeistate)) {
             return true;
         }else
             return false;
 
     }
+
+    public boolean updatexueqicai(String Sno,boolean qicaistate){
+        if (0 < studentConnDAO.updateStudentqicaistate(Sno, qicaistate)) {
+            return true;
+        }else
+            return false;
+
+    }
+
 
     public boolean deletestudent(String Sno) {
         if (0 < studentDAO.deleteStudent(Sno) && 0 < studentConnDAO.deleteStudentConn(Sno)) {

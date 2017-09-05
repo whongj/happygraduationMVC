@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by wanghongjie on 2017/6/15.
+ * Created by zhonghong on 2017/6/15.
  */
 @WebServlet(name = "admainlogin",urlPatterns = "/adminlogin")
 public class admainlogin extends HttpServlet{

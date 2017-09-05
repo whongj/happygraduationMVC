@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by wanghongjie on 2017/6/15.
+ * Created by zhaoniukun on 2017/6/15.
  */
 @WebServlet(name = "upload",urlPatterns = "/upload")
 public class Upload extends HttpServlet {

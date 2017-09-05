@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by ${wanghongjie} on 2017/6/15.
+ * Created by ${macong} on 2017/6/15.
  */
 @WebServlet(name = "update",urlPatterns = "/updatestate")
 public class UpdateServlet extends HttpServlet {
@@ -22,30 +22,33 @@ public class UpdateServlet extends HttpServlet {
         HttpSession httpSession = req.getSession();
         Boolean tushust = null, qicaist = null, xuefeist = null;
         String Sno=null,tushustate=null,qicaistate=null,xuefeistate=null;
-        if (httpSession.getAttribute("admin") == null) {
+        tushustate = req.getParameter("TUSHU");
+        qicaistate = req.getParameter("QICAI");
+        xuefeistate = req.getParameter("XUEFEI");
+        Sno = req.getParameter("Sno");
+        System.out.println(Sno+tushustate+qicaistate+xuefeistate);
+
+        if (httpSession.getAttribute("admain") == null) {
             resp.sendRedirect("error.jsp");
-        }else{
-            Sno = req.getParameter("Sno");
-            tushustate = req.getParameter("tushustate");
-            qicaistate = req.getParameter("qicaistate");
-            xuefeistate = req.getParameter("xuefeistate");
         }
-        if(tushustate=="1"){
+        if(tushustate.equals("1")){
             tushust = true;
         }
-        if (qicaistate == "1") {
+        if (qicaistate.equals("1")) {
             qicaist = true;
         }
-        if (xuefeistate == "1") {
+        if (xuefeistate.equals("1")) {
             xuefeist = true;
         }
+        System.out.println(xuefeist);
+        System.out.println(qicaist);
+        System.out.println(tushust);
 
-
-        if(admainservice.updatetushustate(Sno,tushust)||admainservice.updatetushustate(Sno, qicaist)||admainservice.updatetushustate(Sno, xuefeist)){
-            resp.sendRedirect("success.jsp");
+        if(admainservice.updatetushustate(Sno,tushust)&&admainservice.updatexueqicai(Sno, qicaist)&&admainservice.updatexuefeistate(Sno, xuefeist)){
+            resp.sendRedirect("/user/success.jsp");
 
         }else
-            resp.sendRedirect("error.jsp");
+        resp.sendRedirect("error.jsp");
 
     }
 }
